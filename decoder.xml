@@ -1,10 +1,9 @@
 <!-- decoder.xml,v 1.166 2016/06/23 12:52:01 dcid Exp $
   - OSSEC log decoder.
   - Author: Sumit Katiyar
-  - Jboss Server Log Decoder.
-  - Will extract the regex  
-Examples: -
+  - Jboss Server Log & GC Log Decoder.
 
+Examples: -
 # 18:22:38,612 INFO  [com.talentpact.security.SessionPhaseListener] (http-192.168.45.173:8262-25) 
 # 18:22:38,612 WARN  [com.talentpact.security.SessionPhaseListener] (http-192.168.45.173:8262-25) -->
 
@@ -51,4 +50,31 @@ Examples: -
 <!-- For Error Java Log -->
 <decoder name="jboss-errorjava">
   <prematch>java:\w+/\.</prematch>
+</decoder>
+
+<!-- Jboss GC Log Decoder.
+  - Will extract the status
+  - Examples:
+2017-07-04T15:54:47.863+0530: 69.940: [Full GC [PSYoungGen: 376818K->0K(1520128K)] [ParOldGen: 4792338K->4492716K(4893696K)] 5169157K->4492716K(6413824K) [PSPermGen: 783117K
+2017-07-05T16:46:12.547+0530: 932.685: [GC [PSYoungGen: 1110528K->57039K(1778688K)] 5514929K->4461448K(6672384K), 0.1010360 secs] [Times: user=0.45 sys=0.01, real=0.10 secs]  -->
+
+<!-- For GC Log Pre Matching -->
+<decoder name="jboss-gclog">
+  <prematch>^\d+-\d+-\d+T\d+:\d+:\d+.\d+\p\d+:\s\d+.\d+:\s\p</prematch>
+</decoder>
+
+<!-- For GC in GC Log -->
+<decoder name="jboss-gc">
+  <parent>jboss-gclog</parent>
+  <prematch offset="after_parent">^GC</prematch>
+  <regex offset="after_parent">^(GC) \pPSYoungGen:\s\d+\w->\d+\w\(\d+\w\)\p</regex>
+  <order>status,extra_data</order>
+</decoder>
+
+<!-- For Full GC Log -->
+<decoder name="jboss-fullgc">
+  <parent>jboss-gclog</parent>
+  <prematch offset="after_parent">^Full GC</prematch>
+  <regex offset="after_parent">^(Full GC) \pPSYoungGen:\s\d+\w->\d+\w\(\d+\w\)\p</regex>
+  <order>status,extra_data</order>
 </decoder>
