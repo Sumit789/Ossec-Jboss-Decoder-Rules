@@ -7,7 +7,7 @@ Examples: -
 
 # 18:22:38,612 WARN  [com.talentpact.security.SessionPhaseListener] (http-192.168.45.173:8262-25) -->
 
-<!-- For Info Log -->
+<!-- For INFO Log -->
 <decoder name="jboss-infolog">
   <prematch>^\d\d:\d\d:\d\d,\d+ INFO </prematch>
 </decoder>
@@ -17,17 +17,37 @@ Examples: -
   <prematch>^\d\d:\d\d:\d\d,\d+ WARN </prematch>
 </decoder>
 
-<!-- For Error Log -->
+<!-- For ERROR Log -->
 <decoder name="jboss-errorlog">
   <prematch>^\d\d:\d\d:\d\d,\d+ ERROR </prematch>
 </decoder>
 
-<!-- For SERVE Log -->
+<!-- For SEVERE Log -->
 <decoder name="jboss-severelog">
   <prematch>^\d\d:\d\d:\d\d,\d+ SEVERE</prematch>
 </decoder>
 
-<!-- For Warning Log -->
+<!-- For WARNING Log -->
 <decoder name="jboss-warninglog">
   <prematch>^\d\d:\d\d:\d\d,\d+ WARNING</prematch>
+</decoder>
+
+<!-- For DEBUG Log -->
+<decoder name="jboss-debuglog">
+  <prematch>^\d\d:\d\d:\d\d,\d+ DEBUG</prematch>
+</decoder>
+
+<!-- For Caused by Log -->
+<decoder name="jboss-errorcausedby">
+  <prematch>^Caused by:</prematch>
+</decoder>
+
+<!-- For Error at Log -->
+<decoder name="jboss-errorat">
+  <prematch>at \w+.\.+</prematch>
+</decoder>
+
+<!-- For Error Java Log -->
+<decoder name="jboss-errorjava">
+  <prematch>java:\w+/\.</prematch>
 </decoder>
