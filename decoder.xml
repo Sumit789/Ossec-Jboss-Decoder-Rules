@@ -4,8 +4,8 @@
   - Jboss Server Log & GC Log Decoder.
 
 Examples: -
-# 18:22:38,612 INFO  [com.talentpact.security.SessionPhaseListener] (http-x.x.x.x:8262-25) 
-# 18:22:38,612 WARN  [com.talentpact.security.SessionPhaseListener] (http-x.x.x.x:8262-25) -->
+# 18:22:38,612 INFO  [com.talent.security.SessionPhaseListener] (http-x.x.x.x:8262-25) 
+# 18:22:38,612 WARN  [com.talent.security.SessionPhaseListener] (http-x.x.x.x:8262-25) -->
 
 <!-- For INFO Log -->
 <decoder name="jboss-infolog">
