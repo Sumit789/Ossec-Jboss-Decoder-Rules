@@ -1,0 +1,13 @@
+theme: jekyll-theme-slate
+
+For configuring Decoders and Jboss Rules in Ossec, you need to add these files in Ossec Configuration in /opt/ossec/etc/ossec.conf.
+
+Like:
+
+You have to add jboss rule in rules section of config. file.
+
+<rules>
+<include>jboss_rules.xml</include>
+</rules>
+
+and for Decoders you have to add 
