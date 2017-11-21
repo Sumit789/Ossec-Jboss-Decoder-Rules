@@ -1,7 +1,5 @@
-<!-- @(#) $Id: ./etc/rules/jboss_rules.xml, 2017/06/23 dcid Exp $
-
+<!-- /opt/ossec/etc/rules/jboss_rules.xml, 2017/06/23  
   -  Official Jboss rules for OSSEC.
-  -
   -  Copyright (C) 2017 Sumit Katiyar.
   -  All rights reserved.
   -
@@ -10,7 +8,42 @@
   -  License (version 2) as published by the FSF - Free Software
   -  Foundation.
   -
-  -  License details: http://www.ossec.net/en/licensing.html
-  -
   -  Contributed by: Sumit Katiyar
+  -
 -->
+
+<!-- Jboss Rules-->
+
+<group name="jboss,">
+<rule id="99991" level="0">
+    <decoded_as>jboss-infolog</decoded_as>
+    <description>Jboss info messages grouped.</description>
+</rule>
+<rule id="99992" level="0">
+    <decoded_as>jboss-warnlog</decoded_as>
+    <description>Jboss warn messages grouped.</description>
+</rule>
+<rule id="99993" level="0">
+    <decoded_as>jboss-severelog</decoded_as>
+    <description>Jboss severe messages grouped.</description>
+</rule>
+<rule id="99994" level="0">
+    <decoded_as>jboss-errorlog</decoded_as>
+    <description>Jboss error messages grouped.</description>
+</rule>
+<rule id="99995" level="0">
+    <decoded_as>jboss-errorcausedby</decoded_as>
+    <description>Jboss error messages grouped.</description>
+</rule>
+<rule id="99996" level="0">
+    <decoded_as>jboss-errorat</decoded_as>
+    <description>Jboss at messages grouped.</description>
+</rule>
+<rule id="99997" level="0">
+    <decoded_as>jboss-errorsaml</decoded_as>
+    <description>Jboss saml messages grouped.</description>
+</rule>
+<rule id="99998" level="0">
+    <decoded_as>jboss-warninglog</decoded_as>
+    <description>Jboss warning messages grouped.</description>
+</rule>
