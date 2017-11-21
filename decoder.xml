@@ -5,6 +5,7 @@
   - Will extract the regex  
 Examples: -
 
+# 18:22:38,612 INFO  [com.talentpact.security.SessionPhaseListener] (http-192.168.45.173:8262-25) 
 # 18:22:38,612 WARN  [com.talentpact.security.SessionPhaseListener] (http-192.168.45.173:8262-25) -->
 
 <!-- For INFO Log -->
