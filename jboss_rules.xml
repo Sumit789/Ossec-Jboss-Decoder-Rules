@@ -47,3 +47,91 @@
     <decoded_as>jboss-warninglog</decoded_as>
     <description>Jboss warning messages grouped.</description>
 </rule>
+<rule id="99999" level="0">
+    <decoded_as>jboss-errorjava</decoded_as>
+    <description>Jboss java messages grouped.</description>
+</rule>
+<rule id="99910" level="0">
+    <decoded_as>jboss-debuglog</decoded_as>
+    <description>Jboss debug messages grouped.</description>
+</rule>
+
+<!-- High Level Rules -->
+
+<rule id="99920" level="5">
+    <if_sid>99991</if_sid>
+    <match>JBAS015874: JBoss EAP 6.4.7.GA</match>
+    <description>Node Restarted or Build is Deployed</description>
+</rule>
+<rule id="99921" level="3">
+    <if_sid>99994</if_sid>
+    <match>JBAS014134: EJB Invocation failed on component</match>
+    <description>EJB Invocation failed on component</description>
+</rule>
+<rule id="99922" level="13" frequency="6" timeframe="120">
+    <if_matched_sid>99921</if_matched_sid>
+    <description>EJB Invocation failed on component (Multiple Times)</description>
+</rule>
+<rule id="99923" level="13">
+    <if_sid>99995,99993</if_sid>
+    <match>java.lang.OutOfMemoryError: Java heap space|java.lang.OutOfMemoryError: GC overhead limit exceeded|java.lang.OutOfMemoryError: unable to create new native thread</match>
+    <description>OutOfMemoryError: GC overhead limit exceeded</description>
+</rule>
+<rule id="99924" level="5">
+    <if_sid>99995</if_sid>
+    <match>org.hibernate.exception.GenericJDBCException: could not extract ResultSet</match>
+    <description>Could Not Extract ResultSet</description>
+</rule>
+<rule id="99925" level="13">
+    <if_sid>99995</if_sid>
+    <match>org.hibernate.exception.GenericJDBCException: Could not open connection</match>
+    <description>Could Not Open Database Connection</description>
+</rule>
+<rule id="99926" level="13" frequency="4" timeframe="60">
+    <if_matched_sid>99925</if_matched_sid>
+    <description>Could Not Open Database Connection (Multiple Times)</description>
+</rule>
+<rule id="99927" level="13">
+    <if_matched_sid>99993</if_matched_sid>
+    <match>Error: Could not get a resource from the pool</match>
+    <description>Redis Resource Pool Error</description>
+</rule>
+<rule id="99928" level="13">
+    <if_matched_sid>99995</if_matched_sid>
+    <match>redis.clients.jedis.exceptions.JedisConnectionException: java.net.SocketTimeoutException: connect timed out</match>
+    <description>Redis Connection Time Out</description>
+</rule>
+<rule id="99929" level="13">
+    <if_matched_sid>99992</if_matched_sid>
+    <match>[com.arjuna.ats.arjuna] (Transaction Reaper) ARJUNA012117: TransactionReaper::check timeout for TX</match>
+    <description>Transaction Reaper</description>
+</rule>
+<rule id="99930" level="13">
+    <if_matched_sid>99995</if_matched_sid>
+    <match>java.net.ConnectException: Connection refused</match>
+    <description>Connection refused</description>
+</rule>
+<rule id="99931" level="13">
+    <if_matched_sid>99994</if_matched_sid>
+    <match>JBAS014516: Failed to acquire a permit within 15 MINUTES</match>
+    <description>Failed to acquire a permit within 15 MINUTES</description>
+</rule>
+</group>
+<!-- Jboss Full GC Log -->
+
+<group name="jbossgc">
+<rule id="99960" level="0">
+    <decoded_as>jboss-gclog</decoded_as>
+    <match>[GC [PSYoungGen:</match>
+    <description>GC in Application Node</description>
+</rule>
+<rule id="99961" level="5">
+    <decoded_as>jboss-gclog</decoded_as>
+    <match>[Full GC [PSYoungGen: | [ParOldGen: | [PSPermGen:</match>
+    <description>Full GC in Application Node</description>
+</rule>
+<rule id="99962" level="13" frequency="4" timeframe="60">
+    <if_matched_sid>99961</if_matched_sid>
+    <description>Major Full GC is Going on (Application Node)</description>
+</rule>
+</group>
