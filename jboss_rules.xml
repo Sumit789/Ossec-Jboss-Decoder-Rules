@@ -1,0 +1,16 @@
+<!-- @(#) $Id: ./etc/rules/jboss_rules.xml, 2017/06/23 dcid Exp $
+
+  -  Official Jboss rules for OSSEC.
+  -
+  -  Copyright (C) 2017 Sumit Katiyar.
+  -  All rights reserved.
+  -
+  -  This program is a free software; you can redistribute it
+  -  and/or modify it under the terms of the GNU General Public
+  -  License (version 2) as published by the FSF - Free Software
+  -  Foundation.
+  -
+  -  License details: http://www.ossec.net/en/licensing.html
+  -
+  -  Contributed by: Sumit Katiyar
+-->
