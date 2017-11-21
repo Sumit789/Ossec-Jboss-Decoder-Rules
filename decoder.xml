@@ -1,0 +1,28 @@
+<!-- decoder.xml,v 1.166 2010/06/15 12:52:01 dcid Exp $
+  - OSSEC log decoder.
+  - Author: Sumit Katiyar
+  - Jboss Server Log Decoder.
+  - Will extract the regex  
+Examples: -
+
+# 18:22:38,612 WARN  [com.talentpact.security.SessionPhaseListener] (http-192.168.45.173:8262-25) -->
+
+<decoder name="jboss-infolog">
+  <prematch>^\d\d:\d\d:\d\d,\d+ INFO </prematch>
+</decoder>
+
+<decoder name="jboss-warnlog">
+  <prematch>^\d\d:\d\d:\d\d,\d+ WARN </prematch>
+</decoder>
+
+<decoder name="jboss-errorlog">
+  <prematch>^\d\d:\d\d:\d\d,\d+ ERROR </prematch>
+</decoder>
+
+<decoder name="jboss-severelog">
+  <prematch>^\d\d:\d\d:\d\d,\d+ SEVERE</prematch>
+</decoder>
+
+<decoder name="jboss-warninglog">
+  <prematch>^\d\d:\d\d:\d\d,\d+ WARNING</prematch>
+</decoder>
